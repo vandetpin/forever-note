@@ -23,6 +23,7 @@ import { NoteService } from './note.service';
 
 
 import { AppRoutingModule }   from './app-routing.module';
+import {NoteDetailsComponent} from "./note-details.component";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AppRoutingModule }   from './app-routing.module';
     ProductSearchComponent,
     ProductsComponent,
     NoteItemComponent,
-    DashboardComponent
+    DashboardComponent,
+    NoteDetailsComponent
   ],
   providers: [NoteService, ProductService],
   bootstrap: [ AppComponent ]
