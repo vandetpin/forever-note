@@ -15,6 +15,42 @@ router.get('/', function(req, res, next) {
     // res.send(/* return data here*/);
 });
 
+router.get('/search', function(request, response, next){
+    var category = request.query.cat;
+    var limit = parseInt(request.query.limit);
+    var offset = parseInt(request.query.offset);
+    var keyword = request.query.keyword;
+    var query = {};
+    if(category && keyword)
+        query = {
+            "type": category,
+            "title": {'$regex':keyword},
+        };
+    if(category && !keyword)
+        query = {
+            "type": category,
+        };
+    if(!category && keyword)
+        query = {
+            "title": {'$regex':keyword},
+        };
+    const option = {
+        "limit": limit,
+        "skip": offset
+    };
+    TodoModel.find(query,{} ,option, function(err, result){
+        if(err) throw err;
+        var results = {
+            "items": result,
+            "limit": limit,
+            "offset": offset,
+            "count":result.length
+        };
+        console.dir(results);
+        response.send(results);
+    });
+});
+
 router.post('/save', function(req,res,next){
     // app.db.dosomething();
     new TodoModel(req.body).save(function(err,data){
