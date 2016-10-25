@@ -1,17 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { Note } from './note';
+import { NoteService } from './note.service';
 
 @Component({
   selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <nav>
-        <a   routerLink="/dashboard"  routerLinkActive="active">Dashboard</a>
-        <a  routerLink="/products"  routerLinkActive="active">Products</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `,
- styleUrls: ['../app/app.component.css'],
+  styleUrls: ['../app/app.component.css'],
+  templateUrl : '/app/app.component.html'
 })
-export class AppComponent {
-  title = 'Tour of Product';
+export class AppComponent implements OnInit{
+  notes : Note[];
+  selectedNote : Note;
+
+  constructor(private noteService : NoteService){}
+
+  ngOnInit(): void {
+    // load data to list
+    this.loadNotes();
+  }
+
+  loadNotes(): void {
+      this.noteService.getNotes().then(notes => {
+        this.notes = notes;
+        this.selectedNote = null;
+      });
+  }
 }

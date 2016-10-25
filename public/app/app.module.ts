@@ -18,6 +18,10 @@ import { ProductSearchComponent } from './product-search.component';
 import { DashboardComponent } from './dashboard.component';
 import { ProductService } from './product.service';
 
+import { NoteItemComponent } from './note-item.component';
+import { NoteService } from './note.service';
+
+
 import { AppRoutingModule }   from './app-routing.module';
 
 
@@ -33,9 +37,10 @@ import { AppRoutingModule }   from './app-routing.module';
     ProductDetailComponent,
     ProductSearchComponent,
     ProductsComponent,
+    NoteItemComponent,
     DashboardComponent
   ],
-  providers: [ProductService],
+  providers: [NoteService, ProductService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

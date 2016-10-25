@@ -1,3 +1,16 @@
+.left-bar {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.right-bar {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+
 h1 {
   font-size: 1.2em;
   color: #999;

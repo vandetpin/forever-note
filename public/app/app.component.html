@@ -1,0 +1,47 @@
+<div class='col-md-12'>
+  <h2>Home page</h2>
+</div>
+<div class='col-md-4'>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+    <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
+  </div>
+  <br>
+
+  <div class="left-bar ">
+    <div class="list-group">
+      <note-item [note]="n" *ngFor="let n of notes"></note-item>  
+    </div>  
+  </div>
+</div>
+
+<div class="right-bar col-md-8">
+  <div clas="sub-item">
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">List group item heading</h4>
+        <p class="list-group-item-text">
+            While not always necessary, sometimes you need to put your DOM in a box. 
+        </p>
+      </a>
+      <a href="#" class="list-group-item ">
+        <h4 class="list-group-item-heading">List group item heading</h4>
+        <p class="list-group-item-text">
+            While not always necessary, sometimes you need to put your DOM in a box. 
+        </p>
+      </a>
+      <a href="#" class="list-group-item ">
+        <h4 class="list-group-item-heading">List group item heading</h4>
+        <p class="list-group-item-text">
+            While not always necessary, sometimes you need to put your DOM in a box. 
+        </p>
+      </a>
+      <a href="#" class="list-group-item ">
+        <h4 class="list-group-item-heading">List group item heading</h4>
+        <p class="list-group-item-text">
+            While not always necessary, sometimes you need to put your DOM in a box. 
+        </p>
+      </a>
+    </div>  
+  </div>
+</div>
