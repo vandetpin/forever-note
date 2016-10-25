@@ -1,0 +1,2 @@
+
+db.forevernote.insert({'title': 'title test1','type':'note','createdDate':new Date(), 'updatedDate': new Date(),'deletedDate':new Date(), 'completedDate':new Date(), 'items':[{'content':'content test1','completed': false}]});
