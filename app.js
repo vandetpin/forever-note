@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+
 var users = require('./routes/users');
 var mongoose = require("mongoose");
 
@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -58,7 +58,9 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var db = mongoose.connect('mongodb://localhost:27017/somedb');
+app.listen(3000);
+
+var db = mongoose.connect('mongodb://localhost:27017/test');
 app.locals.db = db; 
 
 module.exports = app;
