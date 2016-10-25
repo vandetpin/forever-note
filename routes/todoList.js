@@ -1,21 +1,39 @@
 var express = require('express');
-var app = express();
 var router = express.Router();
+var TodoModel = require('./models/todoList')
+const DATA_TYPE = ['application/json'];
+const RESPONSE_CODE = [200];
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
     // app.db.dosomething();
-    res.send(/* return data here*/);
+    TodoModel.find({},function(err,notes){
+        if(err) throw err;
+        res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);
+        res.send(notes)
+    })
+    // res.send(/* return data here*/);
 });
 
 router.post('/save', function(req,res,next){
     // app.db.dosomething();
-    res.send(/* return currently saved object here*/);
+    new TodoModel(req.body).save(function(err){
+        if(err) throw err;
+        res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);
+        res.send(this);
+    });
+
+    // res.send(/* return currently saved object here*/);
 })
 
 router.put('/update',function(req,res,next){
     // app.db.dosomething();
-    res.send(/* return currently updated object here*/);
+    var query = { id : req.body.id};
+    TodoModel.update(query,req.body,{/*options*/},function(err,note){
+        if(err) throw err;
+        res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);
+        res.send(note);  
+    })
 })
 
 router.delete('/delete/:id',function(req,res,next){
@@ -36,5 +54,7 @@ var setResponseParams = function(res,statusCode,contentType){
 // var disconnectDb = function(){
 //     mongoose.disconnect();
 // }
+
+
 
 module.exports = router;
