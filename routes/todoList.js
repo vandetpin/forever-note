@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var TodoModel = require('./models/todoList')
+var TodoModel = require('../models/todoList')
 const DATA_TYPE = ['application/json'];
 const RESPONSE_CODE = [200];
 
@@ -17,10 +17,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/save', function(req,res,next){
     // app.db.dosomething();
-    new TodoModel(req.body).save(function(err){
+    new TodoModel(req.body).save(function(err,data){
         if(err) throw err;
         res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);
-        res.send(this);
+        res.send(data);
     });
 
     // res.send(/* return currently saved object here*/);
@@ -43,7 +43,7 @@ router.delete('/delete/:id',function(req,res,next){
 
 var setResponseParams = function(res,statusCode,contentType){
     res.statusCode = statusCode;
-    res.writeHead(statusCode,{'Content-Type':contentType});
+    res.setHeader('Content-Type', contentType);
     return res;
 }
 

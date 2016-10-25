@@ -9,6 +9,7 @@ var mongoose = require("mongoose");
 
 var users = require('./routes/users');
 var notes = require('./routes/todoList');
+var database = require("./db/config");
 
 var app = express();
 
@@ -62,7 +63,7 @@ app.use(function(err, req, res, next) {
 
 app.listen(3000);
 
-var db = mongoose.connect('mongodb://localhost:27017/test');
+var db = mongoose.connect('mongodb://localhost:27017/'+database.dbname);
 app.locals.db = db; 
 
 module.exports = app;
