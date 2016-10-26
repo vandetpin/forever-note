@@ -1,11 +1,11 @@
 .left-bar {
-  height: 100%;
+  height: 70%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
 .right-bar {
-  height: 100%;
+  height: 70%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
