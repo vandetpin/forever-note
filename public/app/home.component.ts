@@ -14,8 +14,12 @@ import { NoteService } from './note.service';
 })
 export class HomeComponent implements OnInit{
   selectedNote : Note;
+  isSearch : boolean = false;
 
-  notes: Observable<Note[]>;
+  
+  notes : Note[];
+
+  searchNotes: Observable<Note[]>;
   // notes: Note[];
   private keyword = new Subject<string>();
   private offset: number =0;
@@ -23,15 +27,12 @@ export class HomeComponent implements OnInit{
   private category: string='';
 
   constructor(private noteService : NoteService){}
+  initSearch():void {
+    this.isSearch = true;
+    this.selectedNote = null;
 
-  // Push a search term into the observable stream.
-  search(term: string): void {
-    this.keyword.next(term);
-  }
-  ngOnInit(): void {
-    
     //config search term
-    this.notes = this.keyword
+    this.searchNotes = this.keyword
       .debounceTime(300)        // wait for 300ms pause in events
       .distinctUntilChanged()   // ignore if next search term is same as previous
       .switchMap(term => term   // switch to new observable each time
@@ -44,9 +45,28 @@ export class HomeComponent implements OnInit{
         //console.log(error);
         return Observable.of<Note[]>([]);
       });
-
-      //TODO load data
   }
+
+  // Push a search term into the observable stream.
+  search(term: string): void {
+    this.keyword.next(term);
+    this.selectedNote = null;
+  }
+  ngOnInit(): void {
+    this.loadHomeData();
+  }
+
+  refreshPage(): void {
+    location.href = "/";
+  }
+
+  loadHomeData():void {
+    this.noteService.getNotes().then(notes=>{
+      this.notes=notes;
+      this.selectedNote = null;
+    })
+  }
+
   //cannot delete here because of notes is Observable object.
   /*deleteNote(note:Note): void{
     this.noteService

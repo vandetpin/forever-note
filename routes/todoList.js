@@ -7,10 +7,19 @@ const RESPONSE_CODE = [200];
 /* GET home page. */
 router.get('/', function(req, res, next) {
     // app.db.dosomething();
-    TodoModel.find({},function(err,notes){
+    var query = {
+        "deletedDate": {'$eq': null},
+    };
+    var option = {
+        'sort': {'updatedDate': -1},
+    };
+    TodoModel.find(query, {}, option,function(err,notes){
         if(err) throw err;
         res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);
-        res.send(notes)
+        const result = {
+            "items": notes
+        };
+        res.send(result)
     })
     // res.send(/* return data here*/);
 });
@@ -25,14 +34,17 @@ router.get('/search', function(request, response, next){
         query = {
             "type": category,
             "title": {'$regex':keyword},
+            "deletedDate": {'$eq': null},
         };
     if(category && !keyword)
         query = {
             "type": category,
+             "deletedDate": {'$eq': null},
         };
     if(!category && keyword)
         query = {
             "title": {'$regex':keyword},
+             "deletedDate": {'$eq': null},
         };
     const option = {
         "limit": limit,
@@ -50,7 +62,7 @@ router.get('/search', function(request, response, next){
     });
 });
 
-router.post('/save', function(req,res,next){
+router.post('/', function(req,res,next){
     // app.db.dosomething();
     new TodoModel(req.body).save(function(err,data){
         if(err) throw err;
@@ -74,6 +86,7 @@ router.delete('/:nid',function(req,res,next){
     var query = {_id:req.params.nid};
     var currentDate = new Date();
     var updateField = {"deletedDate":currentDate};
+    console.log("delete router block")
     TodoModel.findOneAndUpdate(query,updateField,{/*options*/},function(err,note){
         if(err) throw err;
         res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);

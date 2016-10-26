@@ -1,26 +1,32 @@
 <div class='col-md-12'>
   <div class="page-header">
-    <h1>Home dashboard</h1>
+    <h1><a (click)="refreshPage()"> Home dashboard</a></h1>
     <div class="text-right">
-      <button routerLink="/todolist"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-      <button routerLink="/todolist"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></button>
+      <button (click)="initSearch()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>  
+      <button [routerLink]="['/create', 'note']"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+      <button [routerLink]="['/create', 'checklist']"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></button>
     </div>
   </div>
 </div>
 <div class='col-md-4'>
-  <div class="input-group">
+  <div class="input-group search-area" *ngIf="isSearch">
     <span class="input-group-addon" id="basic-addon1">
       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
     </span>
     <input type="text" class="form-control"  #searchBox
          (keyup)="search(searchBox.value)" placeholder="Search" aria-describedby="basic-addon1">
   </div>
-  <br>
 
   <div class="left-bar ">
     <div class="list-group">
-      <note-item [note]="n" [selectedNote]="n==selectedNote"  
-          *ngFor="let n of notes | async" (click)="selectedNote=n" ></note-item>  
+      <span *ngIf="!isSearch">
+        <note-item  [note]="n" [selectedNote]="n==selectedNote"  
+            *ngFor="let n of notes" (click)="selectedNote=n" ></note-item>  
+      </span>
+      <span *ngIf="isSearch">
+        <note-item   [note]="n" [selectedNote]="n==selectedNote"  
+            *ngFor="let n of searchNotes | async" (click)="selectedNote=n" ></note-item>  
+      </span>
     </div>  
   </div>
 </div>

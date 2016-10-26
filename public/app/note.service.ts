@@ -18,8 +18,7 @@ export class NoteService {
     return this.http.get(url)
                .toPromise()
                .then(response => {
-                 console.log(response);
-                  return response.json().data as Note[];
+                  return response.json().items as Note[];
                })
                .catch(this.handleError);
   }
@@ -36,7 +35,8 @@ export class NoteService {
     return Promise.reject(error.message || error);
   }
   update(note:Note): Promise<Note> {
-    const url = `${this.notesUrl}/${note.id}`;
+    const url = `${this.notesUrl}/${note._id}`;
+    console.dir("update url: " + url);
     return this.http
       .put(url, JSON.stringify(note), {headers: this.headers})
       .toPromise()
@@ -46,9 +46,23 @@ export class NoteService {
       })
       .catch(this.handleError);
   }
-  delete(id:number): Promise<void> {
+
+  save(note:Note): Promise<Note> {
+    return this.http
+      .post(this.notesUrl, JSON.stringify(note), {headers: this.headers})
+      .toPromise()
+      .then(() => {
+        console.log("Save on: " + note);
+        return note;
+      })
+      .catch(this.handleError);
+  }
+
+  delete(id:string): Promise<void> {
     const url = `${this.notesUrl}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
+    console.dir("delete url: " + url);
+    return this.http
+      .delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
       .catch(this.handleError);

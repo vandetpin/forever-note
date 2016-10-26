@@ -1,0 +1,26 @@
+.check-list-item {
+    height: 30px;
+}
+
+
+.check-list-item .form-control{
+    float: left;
+}
+.check-list-item .form-control:nth-child(1)  {
+    width: 10%;
+    margin-top: 0;
+}
+
+.check-list-item .form-control:nth-child(2)  {
+    width: 79%;
+}
+
+.check-list-item .form-control:nth-child(3)  {
+    width: 10%;
+    float: right;
+}
+
+.add-item {
+    width: 10%;
+    float: right;
+}

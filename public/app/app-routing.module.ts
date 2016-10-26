@@ -1,15 +1,15 @@
 import { NgModule }      from '@angular/core';
 import { RouterModule, Routes }   from '@angular/router';
 
-import { TodoListComponent} from './todolist.component';
+import { CreateNoteComponent} from './create-note.component';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   
       {
-        path: 'todolist',
-        component: TodoListComponent,
+        path: 'create/:cat',
+        component: CreateNoteComponent,
       },{
         path: 'home',
         component: HomeComponent

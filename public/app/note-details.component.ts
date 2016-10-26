@@ -2,8 +2,8 @@
  * Created by Rajiv on 10/25/2016.
  */
 import { Component, Input, OnInit, EventEmitter} from '@angular/core';
-// import { ActivatedRoute, Params }   from '@angular/router';
-// import { Location }                 from '@angular/common';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
+//import { Location }                 from '@angular/common';
 
 import { Note } from './note';
 import { NoteService } from './note.service';
@@ -12,7 +12,8 @@ import { NoteService } from './note.service';
     // moduleId: module.id,
     selector: 'note-details',
     templateUrl: '/app/note-details.component.html',
-    styleUrls : ['/app/note-details.component.css']
+    styleUrls : ['/app/note-details.component.css'],
+    //providers: [Location],
 })
 export class NoteDetailsComponent  implements OnInit{
     @Input()
@@ -20,13 +21,16 @@ export class NoteDetailsComponent  implements OnInit{
     //deleteNote = new EventEmitter<Note>();
 
     constructor(
-        private noteService: NoteService
+        private noteService: NoteService,
         // private route: ActivatedRoute,
-        // private location: Location
+        //private location: Location,
+        private router:Router,
     ) {}
 
     ngOnInit():void {
-        this.note = new Note();
+        // this.note = new Note();
+        if(this.note.items == null)
+            this.note.items = [{content:'', completed: false}];
     }
 
     viewDetail(id): void {
@@ -36,9 +40,12 @@ export class NoteDetailsComponent  implements OnInit{
     }
     save(): void{
         this.noteService.update(this.note);
+        console.dir(this.note._id);
     }
     delete(): void {
-        this.noteService.delete(this.note.id);
-      //this.noteService.delete(this.note);
+        this.noteService.delete(this.note._id);
+        console.dir(this.note._id);
+        // this.router.navigate(['/']);
+        location.href = '/';
     }
 }

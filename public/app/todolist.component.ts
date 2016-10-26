@@ -12,6 +12,7 @@ import { NoteService } from './note.service';
   styleUrls: ['../app/todolist.component.css'],
   templateUrl: '/app/todolist.component.html',
 })
+
 export class TodoListComponent implements OnInit{ 
     @Input()
     note: Note;
@@ -19,9 +20,18 @@ export class TodoListComponent implements OnInit{
     constructor(
       private noteService: NoteService,
       private route: ActivatedRoute,
-      private location: Location
+      private location: Location,
+      private router: Router
     ) {}
+
     ngOnInit():void {
-      this.note = new Note();
+    }
+
+    addItem(): void {
+      this.note.items.push({content: 'Item', completed: false});
+    }
+
+    removeItem(index: number) {
+      this.note.items.splice(index, 1);
     }
 }

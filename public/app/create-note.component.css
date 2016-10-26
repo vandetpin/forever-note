@@ -1,0 +1,15 @@
+h1 {
+  font-size: 1.2em;
+  color: #999;
+  margin-bottom: 0;
+}
+
+.check-list-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -250px;
+    width: 500px;
+    height: 100px;
+}

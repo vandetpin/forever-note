@@ -1,14 +1,15 @@
-<div *ngIf = "note">
-    <h2>{{note.title}}</h2>
-    <ul>
-        <li *ngFor="let item of note.items">
-            <span><input type="radio"><br></span>
-            <span><input type="text"><br></span>
-        </li>
-    </ul>
+<h2><input type="text" class="form-control" [(ngModel)]="note.title" placeholder="Title" /></h2>
+<div *ngFor="let item of note.items; let itemIndex = index" class="clear form-group check-list-item">
+    <input type="checkbox" class="form-control" [(ngModel)]="item.completed" />
+    <input type="text" class="form-control" [(ngModel)]="item.content" />
+    <button class="btn btn-danger form-control" [disabled]="note.items?.length===1"
+        (click)="removeItem(itemIndex)">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </button>
 </div>
-<div>
-    Hello
-</div>
+<button class="btn btn-default form-control add-item" (click)="addItem()">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+</button>
+
 
 
