@@ -12,7 +12,8 @@ import { NoteService } from './note.service';
   styleUrls: ['../app/todolist.component.css'],
   templateUrl: '/app/todolist.component.html',
 })
-export class TodoListComponent implements OnInit{ 
+export class TodoListComponent implements OnInit{
+    @Input()   
     note: Note;
 
     constructor(
@@ -23,22 +24,6 @@ export class TodoListComponent implements OnInit{
     ) {}
 
     ngOnInit():void {
-      this.note = {
-          _id: null,
-          title: 'Title',
-          type: 'checklist',
-          createdDate: new Date(),
-          updatedDate: new Date(),
-          deletedDate: new Date(),
-          completedDate: new Date(),    
-          items:[
-              {
-                  content: 'Item',
-                  completed: false
-              }
-          ]
-      };
-
     }
 
     addItem(): void {
@@ -47,14 +32,5 @@ export class TodoListComponent implements OnInit{
 
     removeItem(index: number) {
       this.note.items.splice(index, 1);
-    }
-
-    cancel(): void{
-      this.location.back();
-    }
-
-    save(): void {
-      this.noteService.save(this.note);
-      this.router.navigate(['/home']);
     }
 }

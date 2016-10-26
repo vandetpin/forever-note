@@ -12,6 +12,7 @@ import './rxjs-extensions';
 import { AppComponent }  from './app.component';
 
 import { NoteItemComponent } from './note-item.component';
+import { CreateNoteComponent } from './create-note.component';
 import { TodoListComponent } from './todolist.component';
 
 import { NoteDetailsComponent } from "./note-details.component";
@@ -34,6 +35,7 @@ import { AppRoutingModule }   from './app-routing.module';
     NoteDetailsComponent,
     TodoListComponent,
     NoteDetailsComponent,
+    CreateNoteComponent,
     HomeComponent,
     NoteItemComponent
   ],
