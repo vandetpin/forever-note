@@ -16,6 +16,7 @@ export class NoteDetailsComponent  implements OnInit{
     @Input()
     note : Note;
     CONST:any;
+    successMsg= true;
 
     constructor(
         private noteService: NoteService
@@ -28,6 +29,8 @@ export class NoteDetailsComponent  implements OnInit{
     }
     save(): void{
         this.noteService.update(this.note);
+        this.successMsg = false;
+        setTimeout(() => this.successMsg = true, 1000);
         console.dir(this.note._id);
     }
     delete(): void {

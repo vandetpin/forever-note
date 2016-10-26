@@ -4,6 +4,11 @@
             <button type="submit" class="btn btn-primary btn-default" (click)="save()">Save</button>
             <button *ngIf="note?._id" type="button" class="btn btn-default" (click)="delete()">Delete</button>
         </div>
+            <div *ngIf = "!successMsg" >
+                <span class = "text-success">
+                Save Successfully
+                </span>
+            </div>
         <div class="clear">
             <div *ngIf = "note.type ===  CONST?.CATEGORY_NOTE">
                 <note [note]="note" *ngIf="note"></note>
