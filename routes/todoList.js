@@ -61,19 +61,24 @@ router.post('/save', function(req,res,next){
     // res.send(/* return currently saved object here*/);
 })
 
-router.put('/update',function(req,res,next){
-    // app.db.dosomething();
-    var query = { id : req.body.id};
-    TodoModel.update(query,req.body,{/*options*/},function(err,note){
+router.put('/:nid',function(req,res,next){
+    var query = { _id : req.params.nid };
+    TodoModel.findOneAndUpdate(query,req.body,{/*options*/},function(err,note){
         if(err) throw err;
         res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);
         res.send(note);  
     })
 })
 
-router.delete('/delete/:id',function(req,res,next){
-    // app.db.dosomething();
-    res.send(/* return status here*/);
+router.delete('/:nid',function(req,res,next){
+    var query = {_id:req.params.nid};
+    var currentDate = new Date();
+    var updateField = {"deletedDate":currentDate};
+    TodoModel.findOneAndUpdate(query,updateField,{/*options*/},function(err,note){
+        if(err) throw err;
+        res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);
+        res.send(note);
+    })
 })
 
 var setResponseParams = function(res,statusCode,contentType){
