@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit{
   selectedNote : Note;
 
   notes: Observable<Note[]>;
+  // notes: Note[];
   private keyword = new Subject<string>();
   private offset: number =0;
   private limit: number = 100;
@@ -45,6 +46,16 @@ export class HomeComponent implements OnInit{
       });
 
       //TODO load data
-
   }
+  //cannot delete here because of notes is Observable object.
+  /*deleteNote(note:Note): void{
+    this.noteService
+        .delete(note.id)
+        .then(() => {
+          this.notes = this.notes.filter(n => n !== note);
+          if(this.selectedNote === note) {
+            this.selectedNote = null;
+          }
+        });
+    }*/
 }

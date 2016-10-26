@@ -35,4 +35,22 @@ export class NoteService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
+  update(note:Note): Promise<Note> {
+    const url = `${this.notesUrl}/${note.id}`;
+    return this.http
+      .put(url, JSON.stringify(note), {headers: this.headers})
+      .toPromise()
+      .then(() => {
+        console.log("Update on: " + note);
+        return note;
+      })
+      .catch(this.handleError);
+  }
+  delete(id:number): Promise<void> {
+    const url = `${this.notesUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
 }

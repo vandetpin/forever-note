@@ -1,7 +1,7 @@
 /**
  * Created by Rajiv on 10/25/2016.
  */
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter} from '@angular/core';
 // import { ActivatedRoute, Params }   from '@angular/router';
 // import { Location }                 from '@angular/common';
 
@@ -17,6 +17,7 @@ import { NoteService } from './note.service';
 export class NoteDetailsComponent  implements OnInit{
     @Input()
     note : Note;
+    //deleteNote = new EventEmitter<Note>();
 
     constructor(
         private noteService: NoteService
@@ -32,5 +33,12 @@ export class NoteDetailsComponent  implements OnInit{
        // this.noteService.getNoteDetails(id).then(note=>{
        //     this.note = note;
        // });
+    }
+    save(): void{
+        this.noteService.update(this.note);
+    }
+    delete(): void {
+        this.noteService.delete(this.note.id);
+      //this.noteService.delete(this.note);
     }
 }
