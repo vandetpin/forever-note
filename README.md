@@ -15,7 +15,7 @@ Contributed by
 
 ### import db ###
 <pre>
-    mongoimport -d foreverDb -c forevernotes --file  forever-note/forevernote.json
+    mongoimport -d foreverDb -c forevernotes --file  ./db/forevernotes.json
 </pre>
 
 ### run local ###
@@ -28,7 +28,7 @@ $node app.js
 
 - Build & generate angular file
 <pre>
-$cd  forever-note/public
+$cd  ./public
 $npm install
 $npm start
 </pre>

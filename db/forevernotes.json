@@ -1,5 +1,3 @@
-//  mongoimport.exe -d foreverDb -c forevernotes forevernotes.json
-
   {
     "_id": "581115fa86d11a55b7c152bb",
     "title": "esse",
