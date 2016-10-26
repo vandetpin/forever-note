@@ -13,6 +13,7 @@ h1 {
     width: 500px;
     height: 100px;
     clear: both;
+    z-index: 1000;
 }
 .note-container {
     position: absolute;
@@ -23,4 +24,5 @@ h1 {
     width: 500px;
     height: 100px;
     clear: both;
+    z-index: 1000;
 }

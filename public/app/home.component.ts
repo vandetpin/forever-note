@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit{
   selectedNote : Note;
   isSearch : boolean = false;
 
+  CONST:any;
   
   notes : Note[];
 
@@ -53,6 +54,7 @@ export class HomeComponent implements OnInit{
     this.selectedNote = null;
   }
   ngOnInit(): void {
+    this.CONST = CONSTANT;
     this.loadHomeData();
   }
 
