@@ -5,10 +5,10 @@
             <button *ngIf="note?._id" type="button" class="btn btn-default" (click)="delete()">Delete</button>
         </div>
         <div class="clear">
-            <div *ngIf = "note.type === 'note'">
+            <div *ngIf = "note.type ===  CONST?.CATEGORY_NOTE">
                 <note [note]="note" *ngIf="note"></note>
             </div>
-            <div *ngIf = "note.type === 'checklist'" class="padding-top-5px">
+            <div *ngIf = "note.type ===  CONST?.CATEGORY_CHECKLIST" class="padding-top-5px">
                 <todo-list [note]="note" *ngIf="note"></todo-list>                 
             </div>          
         </div>

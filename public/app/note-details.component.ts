@@ -15,12 +15,14 @@ import { NoteService } from './note.service';
 export class NoteDetailsComponent  implements OnInit{
     @Input()
     note : Note;
+    CONST:any;
 
     constructor(
         private noteService: NoteService
     ) {}
 
     ngOnInit():void {
+        this.CONST = CONSTANT;
         if(this.note.items == null)
             this.note.items = [{content:'', completed: false}];
     }

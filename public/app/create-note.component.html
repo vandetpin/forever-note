@@ -9,15 +9,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="note-container clear">
-			<span *ngIf="note?.type=='note'">
-                <note [note]="note"></note>
-            </span>
+		<div class="check-list-container" *ngIf="note?.type==CONST?.CATEGORY_CHECKLIST">
+			<todo-list [note]="note"></todo-list>
 		</div>
-		<div class="check-list-container clear">
-			<span *ngIf="note?.type=='checklist'">
-                <todo-list [note]="note"></todo-list>
-            </span>
+		<div class="note-container" *ngIf="note?.type==CONST?.CATEGORY_NOTE">
+			<note [note]="note"></note>
 		</div>
 	</form>
 </div>

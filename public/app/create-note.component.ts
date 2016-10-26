@@ -5,6 +5,8 @@ import { ActivatedRoute, Params }   from '@angular/router';
 
 import { Note } from './note';
 import { NoteService } from './note.service';
+import './constant.js';
+
 
 @Component({
   moduleId: module.id,
@@ -15,6 +17,7 @@ import { NoteService } from './note.service';
 export class CreateNoteComponent implements OnInit{ 
     note: Note;
     title : string;
+    CONST: any;
 
     constructor(
       private noteService: NoteService,
@@ -24,14 +27,16 @@ export class CreateNoteComponent implements OnInit{
     ) {}
 
     ngOnInit():void {
+      this.CONST = CONSTANT;
+
       this.route.params.forEach((params: Params) => {
-        let category = params['cat'];
+        let category = params[CONSTANT.CATEGORY];
         let _content:string = 'Item';
-        let _type:string = 'checklist';
+        let _type:string = CONSTANT.CATEGORY_CHECKLIST;
         this.title = 'Todo List';
-        if(category === 'note') {
+        if(category === CONSTANT.CATEGORY_NOTE) {
           _content = 'note';  
-          _type = 'note';
+          _type = CONSTANT.CATEGORY_NOTE;
           this.title = 'Note';
         } 
 
