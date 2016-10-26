@@ -13,3 +13,12 @@ h1 {
     width: 500px;
     height: 100px;
 }
+.note-container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -250px;
+    width: 500px;
+    height: 100px;
+}

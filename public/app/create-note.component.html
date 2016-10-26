@@ -12,5 +12,10 @@
         <todo-list [note]="note"></todo-list>
     </span>
 </div>
+<div class="note-container clear">
+    <span *ngIf="note?.type=='note'">
+        <note [note]="note"></note>
+    </span>
+</div>
 
 
