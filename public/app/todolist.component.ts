@@ -22,5 +22,6 @@ export class TodoListComponent implements OnInit{
       private location: Location
     ) {}
     ngOnInit():void {
+      this.note = new Note();
     }
 }

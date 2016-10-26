@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit{
         : Observable.of<Note[]>([]))
       .catch(error => {
         // TODO: real error handling
-        console.log(error);
+        //console.log(error);
         return Observable.of<Note[]>([]);
       });
 
