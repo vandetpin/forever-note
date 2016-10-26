@@ -5,21 +5,12 @@
             <button *ngIf="note?.title" type="button" class="btn btn-default" (click)="delete()">Delete</button>
         </div>
         <div class="clear">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" required class="form-control" id="title" placeholder="Title" [(ngModel)]="note.title" name = "title"> 
+            <div *ngIf = "note.type === 'note'">
+                <note [note]="note" *ngIf="note"></note>
             </div>
-            <div class="form-group">
-                <label>Note</label>
-                <div *ngIf="!note?.items[0]">
-                    <textarea class="form-control"  placeholder="Note" [(ngModel)]= "note.items[0].content" name = "content"></textarea>
-                </div>
-                <div *ngIf="note?.items[0]">
-                    <textarea class="form-control" rows='20' [(ngModel)]= "note.items[0].content"
-                          placeholder="Note" name = "content"></textarea>
-                </div>
-
-            </div>
+            <div *ngIf = "note.type === 'checklist'">
+                <todo-list [note]="note" *ngIf="note"></todo-list>                 
+            </div>          
         </div>
     </form>
 </div>

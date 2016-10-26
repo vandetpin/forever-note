@@ -7,7 +7,13 @@ const RESPONSE_CODE = [200];
 /* GET home page. */
 router.get('/', function(req, res, next) {
     // app.db.dosomething();
-    TodoModel.find({},function(err,notes){
+    var query = {
+        "deletedDate": {'$eq': null},
+    };
+    var option = {
+        'sort': {'updatedDate': -1},
+    };
+    TodoModel.find(query, {}, option,function(err,notes){
         if(err) throw err;
         res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);
         const result = {

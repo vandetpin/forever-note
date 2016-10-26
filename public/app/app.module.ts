@@ -20,6 +20,7 @@ import { HomeComponent } from "./home.component";
 
 import { NoteService } from './note.service';
 import { AppRoutingModule }   from './app-routing.module';
+import {NoteComponent} from './note.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { AppRoutingModule }   from './app-routing.module';
     NoteDetailsComponent,
     CreateNoteComponent,
     HomeComponent,
-    NoteItemComponent
+    NoteItemComponent,
+    NoteComponent,
   ],
   providers: [NoteService],
   bootstrap: [ AppComponent ]

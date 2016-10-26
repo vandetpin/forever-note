@@ -12,8 +12,9 @@ import { NoteService } from './note.service';
   styleUrls: ['../app/todolist.component.css'],
   templateUrl: '/app/todolist.component.html',
 })
-export class TodoListComponent implements OnInit{
-    @Input()   
+
+export class TodoListComponent implements OnInit{ 
+    @Input()
     note: Note;
 
     constructor(

@@ -29,7 +29,8 @@ export class NoteDetailsComponent  implements OnInit{
 
     ngOnInit():void {
         // this.note = new Note();
-        this.note.items = [{content:'', completed: false}];
+        if(this.note.items == null)
+            this.note.items = [{content:'', completed: false}];
     }
 
     viewDetail(id): void {
@@ -38,8 +39,8 @@ export class NoteDetailsComponent  implements OnInit{
        // });
     }
     save(): void{
-        console.dir(this.note._id);
         this.noteService.update(this.note);
+        console.dir(this.note._id);
     }
     delete(): void {
         this.noteService.delete(this.note._id);
