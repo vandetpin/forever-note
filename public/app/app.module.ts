@@ -20,11 +20,9 @@ import { ProductService } from './product.service';
 
 import { NoteItemComponent } from './note-item.component';
 import { NoteService } from './note.service';
-
-
 import { AppRoutingModule }   from './app-routing.module';
 import {NoteDetailsComponent} from "./note-details.component";
-
+import { TodoListComponent} from './todolist.component';
 
 @NgModule({
   imports: [
@@ -40,7 +38,9 @@ import {NoteDetailsComponent} from "./note-details.component";
     ProductsComponent,
     NoteItemComponent,
     DashboardComponent,
-    NoteDetailsComponent
+    NoteDetailsComponent,
+    TodoListComponent,
+
   ],
   providers: [NoteService, ProductService],
   bootstrap: [ AppComponent ]

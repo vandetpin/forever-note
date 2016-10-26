@@ -4,6 +4,7 @@ import { Note } from './note';
 import { NoteService } from './note.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'my-app',
   styleUrls: ['../app/app.component.css'],
   templateUrl : '/app/app.component.html'

@@ -1,0 +1,11 @@
+<div *ngIf = "note">
+    <h2>{{note.title}}</h2>
+    <ul>
+        <li *ngFor="let item of note.items">
+            <span><input type="radio"><br></span>
+            <span><input type="text"><br></span>
+        </li>
+    </ul>
+</div>
+
+

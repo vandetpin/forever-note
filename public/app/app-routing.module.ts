@@ -4,7 +4,7 @@ import { RouterModule, Routes }   from '@angular/router';
 import { ProductDetailComponent } from './product-detail.component';
 import { ProductsComponent } from './products.component';
 import { DashboardComponent } from './dashboard.component';
-
+import { TodoListComponent} from './todolist.component';
 
 
 const routes: Routes = [
@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path: 'detail/:id',
         component: ProductDetailComponent
+      },
+      {
+        path: 'todolist',
+        component: TodoListComponent,
       }
 ];
 

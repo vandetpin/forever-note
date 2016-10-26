@@ -46,7 +46,6 @@ router.get('/search', function(request, response, next){
             "offset": offset,
             "count":result.length
         };
-        console.dir(results);
         response.send(results);
     });
 });
