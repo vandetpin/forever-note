@@ -2,8 +2,8 @@
  * Created by Rajiv on 10/25/2016.
  */
 import { Component, Input, OnInit, EventEmitter} from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
-// import { Location }                 from '@angular/common';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
+//import { Location }                 from '@angular/common';
 
 import { Note } from './note';
 import { NoteService } from './note.service';
@@ -12,7 +12,8 @@ import { NoteService } from './note.service';
     // moduleId: module.id,
     selector: 'note-details',
     templateUrl: '/app/note-details.component.html',
-    styleUrls : ['/app/note-details.component.css']
+    styleUrls : ['/app/note-details.component.css'],
+    //providers: [Location],
 })
 export class NoteDetailsComponent  implements OnInit{
     @Input()
@@ -21,8 +22,9 @@ export class NoteDetailsComponent  implements OnInit{
 
     constructor(
         private noteService: NoteService,
-        private router: ActivatedRoute,
-        // private location: Location
+        // private route: ActivatedRoute,
+        //private location: Location,
+        private router:Router,
     ) {}
 
     ngOnInit():void {
@@ -42,6 +44,7 @@ export class NoteDetailsComponent  implements OnInit{
     delete(): void {
         this.noteService.delete(this.note._id);
         console.dir(this.note._id);
-      //this.noteService.delete(this.note);
+        // this.router.navigate(['/']);
+        location.href = '/';
     }
 }
