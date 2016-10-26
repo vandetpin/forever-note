@@ -36,7 +36,7 @@ export class NoteService {
     return Promise.reject(error.message || error);
   }
   update(note:Note): Promise<Note> {
-    const url = `${this.notesUrl}/${note.id}`;
+    const url = `${this.notesUrl}/${note._id}`;
     return this.http
       .put(url, JSON.stringify(note), {headers: this.headers})
       .toPromise()
@@ -46,8 +46,9 @@ export class NoteService {
       })
       .catch(this.handleError);
   }
-  delete(id:number): Promise<void> {
+  delete(id:string): Promise<void> {
     const url = `${this.notesUrl}/${id}`;
+    console.dir(url);
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
