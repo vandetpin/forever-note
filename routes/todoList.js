@@ -50,7 +50,7 @@ router.get('/search', function(request, response, next){
     });
 });
 
-router.post('/save', function(req,res,next){
+router.post('/', function(req,res,next){
     // app.db.dosomething();
     new TodoModel(req.body).save(function(err,data){
         if(err) throw err;

@@ -46,6 +46,18 @@ export class NoteService {
       })
       .catch(this.handleError);
   }
+
+  save(note:Note): Promise<Note> {
+    return this.http
+      .post(this.notesUrl, JSON.stringify(note), {headers: this.headers})
+      .toPromise()
+      .then(() => {
+        console.log("Save on: " + note);
+        return note;
+      })
+      .catch(this.handleError);
+  }
+
   delete(id:string): Promise<void> {
     const url = `${this.notesUrl}/${id}`;
     console.dir(url);
