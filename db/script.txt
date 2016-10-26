@@ -11,7 +11,8 @@ db.forevernotes.insert({'title': 'title test5','type':'note','createdDate':new D
 
 db.forevernotes.insert({'title': 'title test6','type':'note','createdDate':new Date(), 'updatedDate': new Date(),'deletedDate':'', 'completedDate':'', 'items':[{'content':'content test6','completed': false}]});
 
-    db.forevernotes.insert({'title': 'title test7','type':'checklist','createdDate':new Date(), 'updatedDate': new Date(),'deletedDate':'', 'completedDate':'', 'items':[{'content':'content test7_1','completed': false},{'content':'content test7_2','completed': true}]});
+db.forevernotes.insert({'title': 'title test7','type':'checklist','createdDate':new Date(), 'updatedDate': new Date(),'deletedDate':'', 'completedDate':'', 'items':[{'content':'content test7_1','completed': false},{'content':'content test7_2','completed': true}]});
+db.forevernotes.insert({'title': 'title test7','type':'checklist','createdDate':new Date(), 'updatedDate': new Date(),'deletedDate':'', 'completedDate':'', 'items':[{'content':'content test7_1','completed': false},{'content':'content test7_2','completed': true}]});
 
 db.forevernotes.insert({'title': 'title test8','type':'checklist','createdDate':new Date(), 'updatedDate': new Date(),'deletedDate':'', 'completedDate':new Date(), 'items':[{'content':'content test8_1','completed': true},{'content':'content test8_2','completed': true}]});
 

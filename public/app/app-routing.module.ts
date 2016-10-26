@@ -1,29 +1,18 @@
 import { NgModule }      from '@angular/core';
 import { RouterModule, Routes }   from '@angular/router';
 
-import { ProductDetailComponent } from './product-detail.component';
-import { ProductsComponent } from './products.component';
-import { DashboardComponent } from './dashboard.component';
 import { TodoListComponent} from './todolist.component';
-
+import { HomeComponent } from './home.component';
 
 const routes: Routes = [
-    {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  {
-        path: 'products',
-        component: ProductsComponent
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: 'detail/:id',
-        component: ProductDetailComponent
-      },
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  
       {
         path: 'todolist',
         component: TodoListComponent,
+      },{
+        path: 'home',
+        component: HomeComponent
       }
 ];
 

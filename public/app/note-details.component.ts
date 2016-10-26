@@ -29,8 +29,8 @@ export class NoteDetailsComponent  implements OnInit{
     }
 
     viewDetail(id): void {
-        this.noteService.getNoteDetails(id).then(note=>{
-            this.note = note;
-        });
+       // this.noteService.getNoteDetails(id).then(note=>{
+       //     this.note = note;
+       // });
     }
 }

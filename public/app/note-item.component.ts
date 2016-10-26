@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
-import { Location }                 from '@angular/common';
 
 import { Note } from './note';
 import { NoteService } from './note.service';
@@ -15,17 +13,15 @@ export class NoteItemComponent implements OnInit{
     @Input()
     note : Note;
 
+    @Input()
+    selectedNote : boolean;
+
     constructor(
-      private noteService: NoteService,
-      private route: ActivatedRoute,
-      private location: Location
+      private noteService: NoteService
     ) {}
 
     ngOnInit():void {
     
     }
 
-    viewDetail(): void {
-       //TODO
-    }
 }

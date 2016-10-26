@@ -1,0 +1,27 @@
+<div class='col-md-12'>
+  <div class="page-header">
+    <h1>Home dashboard</h1>
+    <a routerLink="/todolist" routerLinkActive="active">Create TodoList</a>
+  </div>
+</div>
+<div class='col-md-4'>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </span>
+    <input type="text" class="form-control"  #searchBox
+         (keyup)="search(searchBox.value)" placeholder="Search" aria-describedby="basic-addon1">
+  </div>
+  <br>
+
+  <div class="left-bar ">
+    <div class="list-group">
+      <note-item [note]="n" [selectedNote]="n==selectedNote"  
+          *ngFor="let n of notes | async" (click)="selectedNote=n" ></note-item>  
+    </div>  
+  </div>
+</div>
+
+<div class="right-bar col-md-8">
+  <note-details [note]="selectedNote" *ngIf="selectedNote"></note-details>
+</div>

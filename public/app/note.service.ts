@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/toPromise';
-
 import { Note } from './note'; 
 
 @Injectable()
 export class NoteService {
-  private notesUrl = 'app/notes';  // URL to web api
+  private notesUrl = '/notes';  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
@@ -22,6 +22,13 @@ export class NoteService {
                   return response.json().data as Note[];
                })
                .catch(this.handleError);
+  }
+
+  search(keyword: string, offset:number, limit:number, category:string): Observable<Note[]> {
+    const url = `${this.notesUrl}/search?keyword=${keyword}&offset=${offset}&limit=${limit}&cat=${category}`;
+    return this.http
+               .get(url)
+               .map((r: Response) => r.json().items as Note[]);
   }
 
   private handleError(error: any): Promise<any> {
