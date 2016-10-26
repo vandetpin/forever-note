@@ -18,8 +18,7 @@ export class NoteService {
     return this.http.get(url)
                .toPromise()
                .then(response => {
-                 console.log(response);
-                  return response.json().data as Note[];
+                  return response.json().items as Note[];
                })
                .catch(this.handleError);
   }

@@ -10,7 +10,10 @@ router.get('/', function(req, res, next) {
     TodoModel.find({},function(err,notes){
         if(err) throw err;
         res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);
-        res.send(notes)
+        const result = {
+            "items": notes
+        };
+        res.send(result)
     })
     // res.send(/* return data here*/);
 });
