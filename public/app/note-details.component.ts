@@ -1,9 +1,7 @@
 /**
  * Created by Rajiv on 10/25/2016.
  */
-import { Component, Input, OnInit, EventEmitter} from '@angular/core';
-import { ActivatedRoute, Params, Router }   from '@angular/router';
-//import { Location }                 from '@angular/common';
+import { Component, Input, OnInit} from '@angular/core';
 
 import { Note } from './note';
 import { NoteService } from './note.service';
@@ -13,30 +11,18 @@ import { NoteService } from './note.service';
     selector: 'note-details',
     templateUrl: '/app/note-details.component.html',
     styleUrls : ['/app/note-details.component.css'],
-    //providers: [Location],
 })
 export class NoteDetailsComponent  implements OnInit{
     @Input()
     note : Note;
-    //deleteNote = new EventEmitter<Note>();
 
     constructor(
-        private noteService: NoteService,
-        // private route: ActivatedRoute,
-        //private location: Location,
-        private router:Router,
+        private noteService: NoteService
     ) {}
 
     ngOnInit():void {
-        // this.note = new Note();
         if(this.note.items == null)
             this.note.items = [{content:'', completed: false}];
-    }
-
-    viewDetail(id): void {
-       // this.noteService.getNoteDetails(id).then(note=>{
-       //     this.note = note;
-       // });
     }
     save(): void{
         this.noteService.update(this.note);
@@ -45,7 +31,6 @@ export class NoteDetailsComponent  implements OnInit{
     delete(): void {
         this.noteService.delete(this.note._id);
         console.dir(this.note._id);
-        // this.router.navigate(['/']);
         location.href = '/';
     }
 }

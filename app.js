@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 
 
-var users = require('./routes/users');
 var notes = require('./routes/todoList');
 var database = require("./db/config");
 
@@ -26,15 +25,12 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/users', users);
 app.use('/notes',notes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  res.render('page-not-found');
+  //next(err);
 });
 
 // error handlers

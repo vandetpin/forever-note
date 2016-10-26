@@ -66,16 +66,4 @@ export class HomeComponent implements OnInit{
       this.selectedNote = null;
     })
   }
-
-  //cannot delete here because of notes is Observable object.
-  /*deleteNote(note:Note): void{
-    this.noteService
-        .delete(note.id)
-        .then(() => {
-          this.notes = this.notes.filter(n => n !== note);
-          if(this.selectedNote === note) {
-            this.selectedNote = null;
-          }
-        });
-    }*/
 }

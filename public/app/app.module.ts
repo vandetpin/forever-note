@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
-
-//import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-//import { InMemoryDataService }  from './in-memory-data.service';
 import './rxjs-extensions';
 
 
@@ -20,14 +17,13 @@ import { HomeComponent } from "./home.component";
 
 import { NoteService } from './note.service';
 import { AppRoutingModule }   from './app-routing.module';
-import {NoteComponent} from './note.component';
+import { NoteComponent } from './note.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-   // InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
    ],
   declarations: [

@@ -1,7 +1,4 @@
 import { Component, OnInit , Input} from '@angular/core';
-import { Router } from '@angular/router';
-import { Location }                 from '@angular/common';
-import { ActivatedRoute, Params }   from '@angular/router';
 
 import { Note } from './note';
 import { NoteService } from './note.service';
@@ -18,10 +15,7 @@ export class TodoListComponent implements OnInit{
     note: Note;
 
     constructor(
-      private noteService: NoteService,
-      private route: ActivatedRoute,
-      private location: Location,
-      private router: Router
+      private noteService: NoteService
     ) {}
 
     ngOnInit():void {
