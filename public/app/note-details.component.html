@@ -8,7 +8,7 @@
             <div *ngIf = "note.type === 'note'">
                 <note [note]="note" *ngIf="note"></note>
             </div>
-            <div *ngIf = "note.type === 'checklist'">
+            <div *ngIf = "note.type === 'checklist'" class="padding-top-5px">
                 <todo-list [note]="note" *ngIf="note"></todo-list>                 
             </div>          
         </div>
