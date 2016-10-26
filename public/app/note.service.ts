@@ -37,6 +37,7 @@ export class NoteService {
   }
   update(note:Note): Promise<Note> {
     const url = `${this.notesUrl}/${note._id}`;
+    console.dir("update url: " + url);
     return this.http
       .put(url, JSON.stringify(note), {headers: this.headers})
       .toPromise()
@@ -60,8 +61,9 @@ export class NoteService {
 
   delete(id:string): Promise<void> {
     const url = `${this.notesUrl}/${id}`;
-    console.dir(url);
-    return this.http.delete(url, {headers: this.headers})
+    console.dir("delete url: " + url);
+    return this.http
+      .delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
       .catch(this.handleError);

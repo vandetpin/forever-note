@@ -25,14 +25,17 @@ router.get('/search', function(request, response, next){
         query = {
             "type": category,
             "title": {'$regex':keyword},
+            "deletedDate": {'$eq': null},
         };
     if(category && !keyword)
         query = {
             "type": category,
+             "deletedDate": {'$eq': null},
         };
     if(!category && keyword)
         query = {
             "title": {'$regex':keyword},
+             "deletedDate": {'$eq': null},
         };
     const option = {
         "limit": limit,
@@ -74,6 +77,7 @@ router.delete('/:nid',function(req,res,next){
     var query = {_id:req.params.nid};
     var currentDate = new Date();
     var updateField = {"deletedDate":currentDate};
+    console.log("delete router block")
     TodoModel.findOneAndUpdate(query,updateField,{/*options*/},function(err,note){
         if(err) throw err;
         res = setResponseParams(res,RESPONSE_CODE[0],DATA_TYPE[0]);

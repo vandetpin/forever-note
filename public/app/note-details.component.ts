@@ -2,7 +2,7 @@
  * Created by Rajiv on 10/25/2016.
  */
 import { Component, Input, OnInit, EventEmitter} from '@angular/core';
-// import { ActivatedRoute, Params }   from '@angular/router';
+import { ActivatedRoute, Params }   from '@angular/router';
 // import { Location }                 from '@angular/common';
 
 import { Note } from './note';
@@ -20,8 +20,8 @@ export class NoteDetailsComponent  implements OnInit{
     //deleteNote = new EventEmitter<Note>();
 
     constructor(
-        private noteService: NoteService
-        // private route: ActivatedRoute,
+        private noteService: NoteService,
+        private router: ActivatedRoute,
         // private location: Location
     ) {}
 
@@ -40,8 +40,8 @@ export class NoteDetailsComponent  implements OnInit{
         this.noteService.update(this.note);
     }
     delete(): void {
-        console.dir(this.note._id);
         this.noteService.delete(this.note._id);
+        console.dir(this.note._id);
       //this.noteService.delete(this.note);
     }
 }
